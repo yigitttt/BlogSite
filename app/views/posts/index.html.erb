@@ -1,0 +1,7 @@
+<% @posts.each do|post| %>
+  <center><h2><%=link_to post.Ad,post %></h2></center>
+  <center><p><%=time_ago_in_words post.created_at %> ago</p></center>
+<hr>
+<% end %>
+<br>
+<%=link_to "Yeni Post Ekle",new_post_path %>

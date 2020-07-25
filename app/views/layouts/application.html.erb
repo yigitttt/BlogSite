@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo Blog Site</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  <div id="sidebar">
+  <div id="logo">
+    <%= link_to root_path do %>
+     <%=image_tag "blog.svg" %>
+      <%end %>
+  </div>
+    <br>
+    <br>
+    <ul>
+      <li class="category">Blog Bilgilendirme</li>
+      <li><%=link_to "Kayıtlar ve Yorumlar",root_path %></li>
+    </ul>
+    <br>
+    <ul>
+      <li class="category">Sosyal Medya</li>
+      <li><a href="https://twitter.com/login">Twitter</a></li>
+      <li><a href="https://tr-tr.facebook.com/">Facebook</a></li>
+      <li><a href="https://www.instagram.com/?hl=tr">Instagram</a></li>
+      <li><a href="mailto:yigttos@gmail.com">Email</a></li>
+    </ul>
+      <p class="sign_in">Admin Girişi</p>
+  </div>
+  <div id="main_content">
+    <div id="header">
+      <p>Tüm Gönderi Kayıtları</p>
+        <div class="buttons">
+          <button class="button"><%= link_to "Yeni Post", new_post_path %></button>
+          <button class="button">Çıkış</button>
+        </div>
+    </div>
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
+    <%= yield %>
+  </div>
+  </body>
+</html>
